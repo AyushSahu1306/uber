@@ -37,3 +37,34 @@ export const registerUser = async({fullname, email, password}) => {
         }
     }
 }
+
+
+export const loginUser = async(email,password) => {
+    
+    if (!email || !password) {
+        throw new AppError('Email and password are required', 400);
+    }
+    const user = await User.findOne({email}).select("+password");
+    
+    if(!user){
+        throw new AppError("User not found",400);
+    }
+
+    const isMatched = await user.comparePassword(password);
+
+    if(!isMatched){
+        throw new AppError("Invalid credentials",400);
+    }
+
+    const token = user.generateAuthToken();
+
+    return {
+        token,
+        data:{
+            id:user._id,
+            fullname:user.fullname,
+            email:user.email
+        }
+    }
+
+}
