@@ -1,7 +1,7 @@
 import { validationResult } from "express-validator";
 import { loginUser, registerUser } from "../services/user.service.js"
 
-export const register = async(req,res) => {
+export const register = async(req,res,next) => {
     try {
 
         const errors = validationResult(req);
@@ -19,7 +19,7 @@ export const register = async(req,res) => {
     }
 }
 
-export const login = async(req,res) => {
+export const login = async(req,res,next) => {
     try {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -33,7 +33,7 @@ export const login = async(req,res) => {
         res.status(200).json(result);
 
     } catch (error) {
-        next(err);
+        next(error);
     }
 }
 

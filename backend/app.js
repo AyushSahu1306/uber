@@ -3,7 +3,8 @@ import cors from "cors";
 import connectDB from "./db/db.js";
 import cookieParser from "cookie-parser";
 
-import userRoutes from "./routes/user.routes.js"
+import userRoutes from "./routes/user.routes.js";
+import captainRoutes from "./routes/captain.routes.js";
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.get("/",(req,res)=>{
 })
 
 app.use("/api/v1/users",userRoutes);
+app.use("/api/v1/captains",captainRoutes);
 
 app.use((err,req,res,next)=>{
   const status = err.statusCode || 500;
