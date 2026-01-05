@@ -45,7 +45,7 @@ export const loginCaptain = async({email,password}) => {
         throw new AppError("Email and password are required", 400);
     }
 
-    const captain = await captainModel.findOne({email}).select('+password');
+    const captain = await Captain.findOne({email}).select('+password');
 
     if(!captain){
         throw new AppError("Invalid credentials",401);
