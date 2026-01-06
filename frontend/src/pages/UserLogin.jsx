@@ -1,8 +1,11 @@
+import { UserLoginForm } from '@/features/user/components/user-login-form'
 import React from 'react'
 
 const UserLogin = () => {
   return (
-    <div>UserLogin</div>
+    <div className="container flex items-center justify-center min-h-screen py-8">
+      <UserLoginForm/>
+    </div>
   )
 }
 

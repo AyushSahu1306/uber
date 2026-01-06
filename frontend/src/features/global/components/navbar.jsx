@@ -64,8 +64,9 @@ const Navbar = () => {
               <Button variant="ghost" className="text-white hover:text-gray-600 font-medium">
                 Log in
               </Button>
-            </NavLink>
-            <NavLink to="/register">
+        </NavLink>
+
+        <NavLink to="/register">
               <Button className="bg-white text-black hover:bg-gray-200 font-medium rounded-full">
                 Register
               </Button>
